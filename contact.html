@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="robots" content="noindex">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-maxlength/1.7.0/bootstrap-maxlength.min.js"></script>
+        <script src="store.js"></script>
+        <link href="styles.css" rel="stylesheet">
+        <title>Contact</title>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function(){
+                const email = document.getElementById("entry.1884265043");
+                // <!-- Check correct e-mail format, otherwise inform user upon submit-->
+                email.addEventListener("input", function(){
+                  if (email.validity.typeMismatch){
+                    email.setCustomValidity("Please enter a valid e-mail address");
+                  } else {
+                    email.setCustomValidity("");
+                  }
+                });
+                // <!-- Show character counter  -->
+                $("textarea[id='entry.1933569']").maxlength({
+                alwaysShow: true,
+                warningClass: "label label-success",
+                limitReachedClass: "label label-danger",
+                validate: true,
+                appendToParent: true,
+                placement: "bottom-right-inside",
+                });
+
+                // <!-- Show message when character limit reached  -->
+                $("textarea[id='entry.1933569']").on('input', function() {
+                if ($(this).val().length>399) {
+                    alert("Maximum length reached")
+                  }
+                });
+
+                // <!-- Hide honeypot field  -->
+                $("#emailx").css("display", "none");
+
+                // <!-- Counter field (test) -->
+                $("input[id='entry.1852426201']").on("input", function(){
+                  $("#counter").html(function(val){
+                    return val+1;
+                  });
+                });
+
+                // <!-- Disable input on click if Javascript doesn't work -->
+                $("input[id='entry.1852426201']").click(function(){
+                  $(this).prop("disabled", true);
+                });
+
+                // <!-- If honeypot field is entered, the message isn't forwarded to Google forms -->
+                $("form").submit(function(){
+                if ($("input[id='entry.1852426201']").val().length != 0){
+                    window.location ='submission_not_successful.html';
+                    return false;
+                }
+
+                // <!-- If an e-mail address or url is entered in the name field (2. honeypot field), the message isn't forwarded to Google forms -->
+                else if ($("input[id='entry.1884265043']").val().match(/[:a-z].+\.\w\w.*|\@/)){
+                  window.location ='submission_not_successful.html';
+                  return false;
+                }
+
+                // <!-- If an url is entered in the message field (no honeypot field), an alert will be shown -->
+                else if ($("textarea[id='entry.1933569']").val().match(/[:a-z].+\.\w\w.*/)){
+                  alert('No URLs allowed in "message" field');
+                  return false;
+                }
+
+                });
+            });
+
+        </script>
+
+    </head>
+    <body>
+        <main class="container p-3">
+          <h1 class="left" style="padding-top: 50px">Drop me a line</h1>
+          <!--Got some inspiration from here: Credits to ThamaraHessel/Tony Perkins for "How to put forms which send emails on action into static sites without redirect" https://github.com/toperkin/staticFormEmails/blob/master/README.md-->
+          <form action="https://docs.google.com/forms/d/e/1FAIpQLSfDrVWw5YaFzRYh9DF87tsgnngaERH3TSyvvjjTOGNRUtCj7w/formResponse?usp=sf_link" enctype="text/plain" id="gform" target="hidden_iframe" onsubmit="submitted=true;">
+            <ul>
+              <li>
+                <input aria-label="enter your name" type="text" class="email" id="entry.1884265043" name="entry.1884265043" placeholder="Name*" autofocus required autocomplete="off">
+              </li>
+              <li id="emailx">
+                <input class="emailx" id="entry.1852426201" name="entry.1852426201" placeholder="xxx_mailto_xxx*" autocomplete="off" tabindex="-1">
+                <div id="counter">0</div>
+              </li>
+              <li>
+                <input aria-label="enter your e-mail" type="email" id="entry.373896570" name="entry.373896570" placeholder="E-mail*" required>
+              </li>
+              <li>
+                <textarea aria-label="enter your message: max 400 characters, no urls" id="entry.1933569" name="entry.1933569" placeholder="Message*" style="text-indent: 8pt" maxlength="400" required></textarea>
+                <iframe id="myIframe" style="display:none;"></iframe>
+              </li>
+            </ul>
+                <div class="form-check">
+                  <input aria-label="privacy policy read and agreed" type="checkbox" class="form-check-input" value="" id="flexCheckDefault" required>
+                  <label class="form-check-label" for="flexCheckDefault">I have read and agree with the</label>
+                  <a aria-label="privacy policy link" class="link" href="privacy_policy_en.html" target="_blank" title="GDPR" style="font-size: 80%">privacy policy</a>
+                </div>
+            <ul>
+              <li class="button">
+                <button aria-label="submit your message" type="submit" class="btn btn-primary" id="send_button">Send</button>
+                <label aria-label="legal notice link" class="imp" style="font-size: 90%"><a class="link" href="legal_notice.html" target="_blank">Legal notice</a></label>
+              </li>
+            </ul>
+          </form>
+          <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {window.location='submission_successful.html';}"></iframe>
+        </main>
+    </body>
+</html>

@@ -1,0 +1,173 @@
+html, body {
+  overflow: auto;
+  background: black;
+}
+
+.link {
+  color: white;
+  text-decoration: underline;
+  font-size: 100%;
+}
+
+  /* Highlight on mouseover */
+.link:hover {
+  color: white;
+  text-decoration: none;
+  font-weight: bolder;
+}
+
+  /* transparent box for better readability */
+.flex-container {
+  width: 400px;
+  max-width: 100%;
+  background-color: rgb(35, 41, 41);
+  background-color: rgba(35, 41, 41, 0.3);
+  padding: 20px;
+  border-radius: 20px;
+  margin-top: 50px;
+  color: PaleTurquoise;
+}
+
+  /* Headings */
+h1 {
+  color: PaleTurquoise;
+  left: 0;
+  width: 100%;
+  padding-bottom: 32px;
+}
+
+h2 {
+  color: PaleTurquoise;
+  left: 0;
+  font-size: 145%;
+  width: 100%;
+  padding-bottom: 32px;
+}
+
+
+  /* Contact form */
+form {
+  color: PaleTurquoise;
+  font-weight: 500;
+  left: 0;
+  width: 100%;
+  padding-bottom: 24px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+form li + li {
+  margin-top: 1em;
+}
+
+li input,
+li textarea {
+  color: PaleTurquoise;
+  border-radius: 20px;
+  outline: none;
+  width: 280px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid PaleTurquoise;
+  background: rgb(255, 255, 255);
+  background: rgba(255, 255, 255, 0.2);
+  text-indent: 10pt;
+  box-shadow: none !important;
+}
+
+  /* Landing pages for successful/not successful submission */
+#successful, #not_successful {
+  color: PaleTurquoise;
+  border-radius: 20px;
+  outline: none;
+  width: 240px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid PaleTurquoise;
+  background: rgb(255, 255, 255);
+  background: rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  margin-top: 60px;
+}
+
+  /* Test counter */
+#counter {
+  color: white;
+  border-radius: 20px;
+  /*outline: none;*/
+  width: 30px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid white;
+  background: rgb(255, 255, 255);
+  background: rgba(255, 255, 255, 0.2);
+  padding-left: 8px;
+  margin-top: 10px;
+}
+
+input:hover,
+textarea:hover {
+  border-color: PaleTurquoise;
+  border-radius: 6px;
+}
+
+input:focus,
+textarea:focus {
+  border: 3px solid PaleTurquoise;
+  border-radius: 6px;
+}
+
+textarea {
+  height: 9em;
+  margin-bottom: 20px;
+}
+
+  /* Fill-in instruction within fields in full-force colour (not greyed out) */
+::placeholder {
+  color: white !important;
+  opacity: 1;
+}
+
+
+#send_button {
+  background: rgb(255, 255, 255);
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  border: 1px solid PaleTurquoise;
+  color: white;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+#send_button:hover {
+  border-color: PaleTurquoise;
+  border-radius: 7px;
+}
+
+#send_button {
+  margin-right: 140px;
+}
+
+  /* Privacy policy checkbox */
+.form-check-input {
+  border-color: inherit;
+  margin-top: 7px;
+  opacity: 0.8;
+}
+
+.form-check-label {
+  font-size: 80%;
+}
+
+
+
+
+
+
