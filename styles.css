@@ -166,8 +166,9 @@ textarea {
   font-size: 80%;
 }
 
-
-
-
-
+  /* 2d honeypot hiding for non-JS users */
+#emailx {
+  visibility: collapse;
+  pointer-events: none;
+}
 
